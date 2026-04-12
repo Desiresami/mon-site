@@ -1,8 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Mes réseaux</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: "Segoe UI", Arial, sans-serif;
+        color: white;
+        text-align: center;
+
+        background: 
+            linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+            url("photo1.jpg"),
+            url("photo2.jpg");
+
+        background-size: cover;
+        background-position: center;
+    }
+
+    .container {
+        margin-top: 80px;
+    }
+
+    h1 {
+        font-weight: 500;
+        margin-bottom: 40px;
+    }
+
+    .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+        margin: 15px auto;
+        padding: 15px;
+        width: 260px;
+
+        background: rgba(255,255,255,0.08);
+        backdrop-filter: blur(10px);
+
+        color: white;
+        text-decoration: none;
+        border-radius: 12px;
+
+        font-size: 16px;
+        transition: 0.3s;
+    }
+
+    .btn:hover {
+        background: rgba(255,255,255,0.18);
+        transform: scale(1.05);
+    }
+
+    .icon {
+        font-size: 18px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Retrouve-moi</h1>
+
+    <!-- Bouton contact -->
+    <a class="btn" href="#" onclick="openVCard()">
+        <span class="icon">👤</span> Ajouter contact
+    </a>
+
+    <!-- Appel -->
+    <a class="btn" href="tel:+241074233986">
+        <span class="icon">📞</span> Appeler
+    </a>
+
+    <!-- Instagram -->
+    <a class="btn" href="https://www.instagram.com/goatname.sterben/" target="_blank">
+        <span class="icon">◎</span> Instagram
+    </a>
+
+    <!-- TikTok -->
+    <a class="btn" href="https://www.tiktok.com/@samskating0" target="_blank">
+        <span class="icon">▶</span> TikTok
+    </a>
+
+</div>
+
+<script>
+function openVCard() {
+    const vcard = `
 BEGIN:VCARD
 VERSION:3.0
-FN:Sam Sterben
-ORG:Sam Sterben
+FN:Sam
+ORG:sterben
 TEL;TYPE=CELL:+241074233986
+END:VCARD
+    `.trim();
 URL:https://www.instagram.com/goatname.sterben/
 URL:https://www.tiktok.com/@samskating0
-END:VCARD
+    const blob = new Blob([vcard], { type: "text/vcard;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+
+   
+    window.location.href = url;
+}
+</script>
+
+</body>
+</html>
