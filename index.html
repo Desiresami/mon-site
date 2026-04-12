@@ -97,10 +97,11 @@ VERSION:3.0
 FN:Sam
 ORG:sterben
 TEL;TYPE=CELL:+241074233986
-END:VCARD
-    `.trim();
 URL:https://www.instagram.com/goatname.sterben/
 URL:https://www.tiktok.com/@samskating0
+END:VCARD
+    `.trim();
+
     const blob = new Blob([vcard], { type: "text/vcard;charset=utf-8" });
     const url = URL.createObjectURL(blob);
 
