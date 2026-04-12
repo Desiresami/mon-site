@@ -1,42 +1,105 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Mes réseaux</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #111;
-            color: white;
-            text-align: center;
-            padding-top: 50px;
-        }
-        h1 {
-            margin-bottom: 30px;
-        }
-        a {
-            display: block;
-            margin: 15px auto;
-            padding: 15px;
-            width: 250px;
-            background: #1db954;
-            color: white;
-            text-decoration: none;
-            border-radius: 10px;
-            font-size: 18px;
-        }
-        a:hover {
-            background: #17a74a;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Mes réseaux</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: "Segoe UI", Arial, sans-serif;
+        color: white;
+        text-align: center;
+
+        background: 
+            linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+            url("photo1.jpg"),
+            url("photo2.jpg");
+
+        background-size: cover;
+        background-position: center;
+    }
+
+    .container {
+        margin-top: 80px;
+    }
+
+    h1 {
+        font-weight: 500;
+        margin-bottom: 40px;
+    }
+
+    .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+        margin: 15px auto;
+        padding: 15px;
+        width: 260px;
+
+        background: rgba(255,255,255,0.08);
+        backdrop-filter: blur(10px);
+
+        color: white;
+        text-decoration: none;
+        border-radius: 12px;
+
+        font-size: 16px;
+        transition: 0.3s;
+    }
+
+    .btn:hover {
+        background: rgba(255,255,255,0.18);
+        transform: scale(1.05);
+    }
+
+    .icon {
+        font-size: 18px;
+    }
+</style>
 </head>
+
 <body>
 
-    <h1>Retrouve-moi 👇</h1>
+<div class="container">
 
-    <a href="tel:+241074233986">📞 M'appeler/whatsapp</a>
-    <a href="https://www.instagram.com/goatname.sterben/" target="_blank">📸 Instagram</a>
-    <a href="https://www.tiktok.com/@samskating0" target="_blank">🎵 TikTok</a>
+    <h1>Retrouve-moi</h1>
+
+    <a class="btn" href="#" onclick="downloadVCard()">
+        <span class="icon">👤</span> Ajouter contact
+    </a>
+
+   
+    <a class="btn" href="https://www.instagram.com/goatname.sterben/" target="_blank">
+        <span class="icon">◎</span> Instagram
+    </a>
+
+    <a class="btn" href="https://www.tiktok.com/@samskating0" target="_blank">
+        <span class="icon">▶</span> TikTok
+    </a>
+
+</div>
+
+<script>
+function downloadVCard() {
+    const vcard = `
+BEGIN:VCARD
+VERSION:3.0
+FN:Sam Sterben
+TEL:+241074233986
+END:VCARD
+    `.trim();
+
+    const blob = new Blob([vcard], { type: "text/vcard" });
+    const link = document.createElement("a");
+
+    link.href = URL.createObjectURL(blob);
+    link.download = "contact.vcf";
+    link.click();
+}
+</script>
 
 </body>
-</html
+</html>
