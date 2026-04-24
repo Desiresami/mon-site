@@ -2,89 +2,175 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mes réseaux</title>
 
 <style>
-    body {
-        margin: 0;
-        font-family: "Segoe UI", Arial, sans-serif;
-        color: white;
-        text-align: center;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        background: 
-            linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
-            url("photo1.jpg"),
-            url("photo2.jpg");
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+    height: 100vh;
 
-        background-size: cover;
-        background-position: center;
-    }
+    background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #000);
+    background-size: 400% 400%;
+    animation: bgMove 12s ease infinite;
+}
 
-    .container {
-        margin-top: 80px;
-    }
+/* ANIMATION FOND */
+@keyframes bgMove {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
 
-    h1 {
-        font-weight: 500;
-        margin-bottom: 40px;
-    }
+/* PARTICULES */
+.particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 50%;
+    animation: float 10s linear infinite;
+    z-index: 1;
+}
 
-    .btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
+@keyframes float {
+    0% {transform: translateY(100vh) scale(0);}
+    100% {transform: translateY(-10vh) scale(1);}
+}
 
-        margin: 15px auto;
-        padding: 15px;
-        width: 260px;
+/* CONTENU */
+.container {
+    position: relative;
+    z-index: 2;
+    margin-top: 60px;
+    padding: 20px;
+    animation: fadeIn 1.2s ease;
+}
 
-        background: rgba(255,255,255,0.08);
-        backdrop-filter: blur(10px);
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
 
-        color: white;
-        text-decoration: none;
-        border-radius: 12px;
+h1 {
+    font-size: 24px;
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px rgba(255,255,255,0.3);
+}
 
-        font-size: 16px;
-        transition: 0.3s;
-    }
+/* BOUTONS */
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
 
-    .btn:hover {
-        background: rgba(255,255,255,0.18);
-        transform: scale(1.05);
-    }
+    margin: 12px auto;
+    padding: 15px;
+    width: 90%;
+    max-width: 340px;
 
-    .icon {
-        font-size: 18px;
-    }
+    border-radius: 16px;
+    text-decoration: none;
+    font-size: 16px;
+    color: white;
+
+    backdrop-filter: blur(12px);
+    transition: 0.3s;
+    box-shadow: 0 0 15px rgba(255,255,255,0.1);
+}
+
+/* GLOW HOVER */
+.btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 25px rgba(255,255,255,0.4);
+}
+
+/* COULEURS */
+.contact { background: linear-gradient(45deg, #667eea, #764ba2); }
+.call { background: linear-gradient(45deg, #11998e, #38ef7d); }
+.instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+.tiktok { background: linear-gradient(45deg, #000, #25F4EE, #FE2C55); }
+
+/* ICONES */
+.icon {
+    font-size: 18px;
+}
+
+/* ROLLERS */
+.roller {
+    position: absolute;
+    font-size: 28px;
+    opacity: 0.5;
+    z-index: 1;
+    animation: roll linear infinite;
+    filter: blur(0.3px);
+}
+
+.r1 { top: 20%; animation-duration: 10s; }
+.r2 { top: 45%; animation-duration: 14s; font-size: 34px; }
+.r3 { top: 70%; animation-duration: 18s; }
+.r4 { top: 35%; animation-duration: 22s; }
+
+@keyframes roll {
+    0% {transform: translateX(-10%) rotate(0deg);}
+    100% {transform: translateX(110vw) rotate(720deg);}
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+    h1 { font-size: 20px; }
+    .btn { font-size: 15px; }
+}
 </style>
 </head>
 
 <body>
 
+<!-- PARTICULES -->
+<script>
+for (let i = 0; i < 25; i++) {
+    let p = document.createElement("div");
+    p.className = "particle";
+    p.style.left = Math.random() * 100 + "vw";
+    p.style.animationDuration = (5 + Math.random() * 10) + "s";
+    document.body.appendChild(p);
+}
+</script>
+
+<!-- ROLLERS -->
+<div class="roller r1">🛼</div>
+<div class="roller r2">🛼</div>
+<div class="roller r3">🛼</div>
+<div class="roller r4">🛼</div>
+
 <div class="container">
 
-    <h1>comment me joindre :) </h1>
+    <h1>comment me joindre :)</h1>
 
-    <!-- Bouton contact -->
-    <a class="btn" href="#" onclick="openVCard()">
+    <a class="btn contact" href="#" onclick="openVCard()">
         <span class="icon">👤</span> Ajouter contact
     </a>
 
-    <!-- Appel -->
-    <a class="btn" href="tel:+241074233986">
+    <a class="btn call" href="tel:+241074233986">
         <span class="icon">📞</span> Appeler
     </a>
 
-    <!-- Instagram -->
-    <a class="btn" href="https://www.instagram.com/goatname.sterben/" target="_blank">
-        <span class="icon">◎</span> Instagram
+    <a class="btn instagram" href="https://www.instagram.com/goatname.sterben/" target="_blank">
+        <span class="icon">📸</span> Instagram
     </a>
 
-    <!-- TikTok -->
-    <a class="btn" href="https://www.tiktok.com/@samskating0" target="_blank">
-        <span class="icon">▶</span> TikTok
+    <a class="btn tiktok" href="https://www.tiktok.com/@samskating0" target="_blank">
+        <span class="icon">🎵</span> TikTok
     </a>
 
 </div>
@@ -104,8 +190,6 @@ END:VCARD
 
     const blob = new Blob([vcard], { type: "text/vcard;charset=utf-8" });
     const url = URL.createObjectURL(blob);
-
-    // Ouvre directement la fiche contact
     window.location.href = url;
 }
 </script>
